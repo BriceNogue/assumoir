@@ -1,11 +1,22 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+const express = require('express')
+const app = express()
+require('dotenv').config()
+const cors = require('cors')
+const { body, validationResult } = require('express-validator')
+const initRoutes = require('./routes')
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!!!');
-});
+const PORT = process.env.PORT || 3000
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+app.use(express.json())
+app.use(cors({
+    credentials:true,
+    origin: ['http://exemple.com','*']
+}))
+
+initRoutes(app)
+
+app.listen(PORT, ()=>{
+    console.log('server running on port',PORT)
+})
+
+module.exports = app
