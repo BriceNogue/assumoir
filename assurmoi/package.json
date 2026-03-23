@@ -11,10 +11,14 @@
     "url": "git+https://github.com/BriceNogue/assumoir.git"
   },
   "license": "ISC",
-  "author": "BNO",
+  "author": "Brice Nogue",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }

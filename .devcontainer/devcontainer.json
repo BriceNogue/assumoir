@@ -1,0 +1,34 @@
+{
+    "name": "API Assurmoi (Node + MariaDB)",
+    
+    // On indique à VS Code d'utiliser le fichier docker-compose
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+    
+    // On précise dans quel conteneur VS Code doit entrer pour coder
+    "service": "app-assurmoi-node",
+    
+    // On indique le dossier de travail (doit correspondre au working_dir du docker-compose)
+    "workspaceFolder": "/home/app/assurmoi",
+    
+    // On transfère les ports des autres conteneurs vers le PC physique
+    "forwardPorts": [
+        3000, // API Node
+        8080, // Adminer (Client BDD)
+        8025  // MailHog (Interface Web)
+    ],
+
+    // Outils optionnels installés dans VS Code
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode"
+            ]
+        }
+    },
+
+    // Commande exécutée une fois le conteneur créé
+    "postCreateCommand": "npm install"
+}
