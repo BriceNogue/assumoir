@@ -1,0 +1,20 @@
+{
+  "name": "assurmoi",
+  "version": "1.0.0",
+  "description": "Projet scolaire SDV 2026",
+  "homepage": "https://github.com/BriceNogue/assumoir#readme",
+  "bugs": {
+    "url": "https://github.com/BriceNogue/assumoir/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BriceNogue/assumoir.git"
+  },
+  "license": "ISC",
+  "author": "BNO",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
