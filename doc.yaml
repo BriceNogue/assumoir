@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  title: AssurMoi API - Gestion des Sinistres
+  description: API de suivi dématérialisé des sinistres automobile (Projet M2 - 2026)
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api/v1
+    description: Serveur de développement local
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Sinister:
+      type: object
+      properties:
+        plate: { type: string, example: "AB-123-CD" }
+        driver_firstname: { type: string }
+        driver_lastname: { type: string }
+        driver_engaged_responsability: { type: integer, enum: [0, 50, 100] }
+        sinister_datetime: { type: string, format: date-time }
+
+    Request:
+      type: object
+      properties:
+        id: { type: integer }
+        status: { type: string, enum: [INITIALIZED, EXPERTISE_PENDING, REPAIR_IN_PROGRESS, CLOSED] }
+        diagnostic: { type: string, enum: [REPAIRABLE, NOT_REPAIRABLE, PENDING] }
+        closed: { type: boolean }
+
+security:
+  - bearerAuth: []
+
+paths:
+  /sinisters:
+    post:
+      summary: Déclarer un nouveau sinistre
+      tags: [Sinistres]
+      description: Accessible par CHARGE_CLIENTELE et ADMIN. Initialise aussi une Request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sinister'
+      responses:
+        201:
+          description: Sinistre créé avec succès.
+        400:
+          description: Erreur de validation des données.
+
+  /requests/{id}/status:
+    patch:
+      summary: Faire progresser le dossier (Changement de statut)
+      tags: [Dossiers]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status: { type: string }
+                diagnostic: { type: string }
+      responses:
+        200:
+          description: Dossier mis à jour et action historisée.
+
+  /documents/upload:
+    post:
+      summary: Uploader un document (RIB, Carte Grise, etc.)
+      tags: [Documents]
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file: { type: string, format: binary }
+                type: { type: string, enum: [RIB, CNI, FACTURE] }
+      responses:
+        201:
+          description: Document enregistré en attente de validation.

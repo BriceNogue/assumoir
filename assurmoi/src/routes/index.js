@@ -1,18 +1,15 @@
-const userRoutes = require('./users')
+const express = require('express');
+const router = express.Router();
 
-function initRoutes(app){
+const userRoutes = require('./user.routes');
+const sinisterRoutes = require('./sinister.routes');
+const requestRoutes = require('./request.routes');
+const documentRoutes = require('./document.routes');
 
-    app.use('/user',userRoutes)
+// Préfixes des API
+router.use('/users', userRoutes);
+router.use('/sinisters', sinisterRoutes);
+router.use('/requests', requestRoutes);
+router.use('/documents', documentRoutes);
 
-    app.get ('/',(req, res,next)=> {
-        console.log('middleware Homepage')
-        next()
-    },(req, res,next)=>{
-        console.log('Controller Homepage')
-        res.status(200).json({
-            message: "Bienvenu sur la page d'accueil"
-        })
-    })
-}
-
-module.exports = initRoutes
+module.exports = router;

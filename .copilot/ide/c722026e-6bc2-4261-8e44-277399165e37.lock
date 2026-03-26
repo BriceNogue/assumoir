@@ -1,0 +1,14 @@
+{
+  "socketPath": "/tmp/mcp-jBlcCF/mcp.sock",
+  "scheme": "unix",
+  "headers": {
+    "Authorization": "Nonce c3386a8e-623a-4750-a64c-de4efe6c598e"
+  },
+  "pid": 248,
+  "ideName": "Visual Studio Code",
+  "timestamp": 1774345392821,
+  "workspaceFolders": [
+    "/home/app/assurmoi"
+  ],
+  "isTrusted": true
+}
