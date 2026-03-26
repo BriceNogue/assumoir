@@ -12,3 +12,5 @@ module.exports = (sequelize, DataTypes) => {
   };
   return History;
 };
+
+// npx sequelize-cli migration:generate --name create-histories

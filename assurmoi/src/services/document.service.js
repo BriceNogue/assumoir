@@ -33,4 +33,9 @@ const validateDocument = async (req, res) => {
     }
 };
 
-module.exports = { uploadDocument, validateDocument };
+const documentService = {
+    uploadDocument,
+    validateDocument
+};
+
+module.exports = documentService;

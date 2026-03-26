@@ -31,3 +31,5 @@ module.exports = (sequelize, DataTypes) => {
 
   return Request;
 };
+
+// npx sequelize-cli migration:generate --name create-requests

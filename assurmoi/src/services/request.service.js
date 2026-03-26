@@ -1,9 +1,12 @@
-const { Request, dbInstance, History } = require('../models');
+const { Request, dbInstance, History, Sinister, Document } = require('../models');
 
 const getRequest = async (req, res) => {
     const request = await Request.findOne({
         where: { id: req.params.id },
-        include: ['Sinister', 'diag_report']
+        include: [
+            { model: Sinister },
+            { model: Document, as: 'diag_report' } 
+        ]
     });
     res.status(200).json({ request });
 };
@@ -30,4 +33,9 @@ const updateRequestStatus = async (req, res) => {
     }
 };
 
-module.exports = { getRequest, updateRequestStatus };
+const requestService = {
+    getRequest,
+    updateRequestStatus
+};
+
+module.exports = requestService;

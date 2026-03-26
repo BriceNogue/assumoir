@@ -8,3 +8,5 @@ module.exports = (sequelize, DataTypes) => {
   }, { tableName: 'documents' });
   return Document;
 };
+
+// npx sequelize-cli migration:generate --name create-documents

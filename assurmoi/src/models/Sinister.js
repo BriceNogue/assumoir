@@ -21,3 +21,5 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Sinister;
 };
+
+// npx sequelize-cli migration:generate --name create-sinisters

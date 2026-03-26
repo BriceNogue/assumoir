@@ -15,3 +15,5 @@ module.exports = (sequelize, DataTypes) => {
   };
   return User;
 };
+
+// npx sequelize-cli migration:generate --name create-users

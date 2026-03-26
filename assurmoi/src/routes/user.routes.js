@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const userService = require('../services/user.service'); // Votre service CRUD User
+const userService = require('../services/user.service');
 const { protect } = require('../middlewares/auth.middleware');
 const { restrictTo } = require('../middlewares/role.middleware');
 
