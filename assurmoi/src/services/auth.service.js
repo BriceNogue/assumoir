@@ -3,6 +3,7 @@ const { dbInstance } = require('../models');
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { mailLogin } = require('../utils/mailer');
 
 const login = async (req, res) => {
     try {
@@ -36,6 +37,12 @@ const login = async (req, res) => {
                 expiresIn: process.env.JWT_EXPIRES_IN || '1h' 
             }
         );
+
+        // Envoi de l'email de notification de connexion.
+        const mailStatus = await mailLogin(user);
+        if (mailStatus !== true) {
+            console.error('Login notification not sent');
+        }
 
         // Réponse avec le token et les infos utilisateur.
         return res.status(200).json({

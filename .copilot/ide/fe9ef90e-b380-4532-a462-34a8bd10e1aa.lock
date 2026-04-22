@@ -1,0 +1,14 @@
+{
+  "socketPath": "/tmp/mcp-NgFlFJ/mcp.sock",
+  "scheme": "unix",
+  "headers": {
+    "Authorization": "Nonce 09e41900-f287-4c76-b455-d6af7533cf3e"
+  },
+  "pid": 356,
+  "ideName": "Visual Studio Code",
+  "timestamp": 1776768458004,
+  "workspaceFolders": [
+    "/home/app/assurmoi"
+  ],
+  "isTrusted": true
+}

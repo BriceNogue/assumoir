@@ -16,7 +16,8 @@
     "forwardPorts": [
         3000, // API Node
         8080, // Adminer (Client BDD)
-        8025  // MailHog (Interface Web)
+        8025, // MailHog (Interface Web)
+        8081 // React native
     ],
 
     // Outils optionnels installés dans VS Code
