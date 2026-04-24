@@ -6,6 +6,8 @@ const { restrictTo } = require('../middlewares/role.middleware');
 
 router.use(protect);
 
+router.get('/', restrictTo('CHARGE_SUIVI', 'GESTIONNAIRE', 'ADMIN'), requestService.getAllRequests);
+
 // Consultation : Accessible par tous les rôles.
 router.get('/:id', requestService.getRequest);
 

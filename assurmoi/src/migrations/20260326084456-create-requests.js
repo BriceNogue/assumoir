@@ -22,10 +22,25 @@ module.exports = {
         type: Sequelize.ENUM('PENDING', 'REPAIRABLE', 'NOT_REPAIRABLE'), 
         defaultValue: 'PENDING' 
       },
+      expertise_plan_date: { 
+        type: Sequelize.DATE 
+      },
+      expertise_effective_date: { 
+        type: Sequelize.DATE 
+      },
+      diagnostic_report_file: { 
+        type: Sequelize.INTEGER, 
+        references: { model: 'documents', key: 'id' }, 
+        onDelete: 'SET NULL' 
+      },
 
       // Champs scénarios
       case1_pickup_plan_date: { 
         type: Sequelize.DATE 
+      },
+      case1_third_party_invoice_paid: { 
+        type: Sequelize.BOOLEAN, 
+        defaultValue: false 
       },
       case2_estimated_compensation: { 
         type: Sequelize.FLOAT 

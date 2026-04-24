@@ -13,7 +13,11 @@ module.exports = (sequelize, DataTypes) => {
     case2_estimated_compensation: DataTypes.FLOAT,
     case2_approved_compensation: { type: DataTypes.BOOLEAN, defaultValue: false },
     closed: { type: DataTypes.BOOLEAN, defaultValue: false }
-  }, { tableName: 'requests' });
+  }, { 
+    tableName: 'requests',
+    timestamps: true, // Pour createdAt et updatedAt aujouter automatiquement par Sequelize.
+    underscored: false // Pour createdAt et updatedAt aujouter automatiquement par Sequelize.
+  });
 
   Request.associate = (models) => {
     Request.belongsTo(models.Sinister, { foreignKey: 'sinister_id' });

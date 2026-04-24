@@ -14,6 +14,12 @@ const getAllSinisters = async (req, res) => {
     res.status(200).json({ sinisters });
 }
 
+const getSinisterById = async (req, res) => {
+    const sinister = await Sinister.findByPk(req.params.id);
+    if (!sinister) return res.status(404).json({ message: "Sinister not found" });
+    res.status(200).json({ sinister });
+}
+
 const createSinister = async (req, res) => {
     const transaction = await dbInstance.transaction();
     try {
@@ -51,6 +57,7 @@ const updateSinister = async (req, res) => {
 
 const sinisterService = {
     getAllSinisters,
+    getSinisterById,
     createSinister,
     updateSinister
 };

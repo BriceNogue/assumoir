@@ -30,7 +30,7 @@ const login = async (req, res) => {
         const token = jwt.sign(
             { 
                 id: user.id, 
-                role: user.role 
+                role: user.role
             },
             process.env.JWT_SECRET || 'fallback_secret_pour_le_dev',
             { 

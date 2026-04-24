@@ -22,5 +22,5 @@ module.exports = {
   }
 };
 
-// Générer le seed : npx sequelize-cli seed:generate --name admin-user
-// Exécuter le seed : npx sequelize-cli db:seed:all
+// Pour générer le seed : npx sequelize-cli seed:generate --name admin-user
+// Pour exécuter le seed : npx sequelize-cli db:seed:all

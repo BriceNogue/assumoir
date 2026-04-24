@@ -18,7 +18,8 @@ const dbInstance = new Sequelize(
     dialectOptions: {
       ssl: { require: true, rejectUnauthorized: false }
     },
-    logging: false
+    logging: false,
+    logging: console.log,
   }
 );
 

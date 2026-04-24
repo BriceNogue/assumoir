@@ -14,7 +14,9 @@ app.get('/', (req, res) => {
 app.use(express.json())
 app.use(cors({
     credentials:true,
-    origin: ['http://exemple.com','*']
+    origin: ['http://localhost:8081','*'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
 }))
 
 //initRoutes(app)

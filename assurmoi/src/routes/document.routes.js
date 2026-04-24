@@ -6,6 +6,8 @@ const { restrictTo } = require('../middlewares/role.middleware');
 
 router.use(protect);
 
+router.get('/', restrictTo('CHARGE_SUIVI', 'GESTIONNAIRE', 'ADMIN'), docService.getAllDocuments);
+
 router.post('/upload', docService.uploadDocument);
 
 router.patch('/:id/validate', 

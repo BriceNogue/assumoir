@@ -19,8 +19,25 @@ module.exports = {
       driver_lastname: { 
         type: Sequelize.STRING 
       },
+      driver_is_insured: { 
+        type: Sequelize.BOOLEAN, 
+        defaultValue: true 
+      },
+      call_datetime: { 
+        type: Sequelize.DATE 
+      },
+      sinister_datetime: { 
+        type: Sequelize.DATE 
+      },
+      context: { 
+        type: Sequelize.TEXT 
+      },
       driver_engaged_responsability: { 
         type: Sequelize.INTEGER 
+      },
+      validated: { 
+        type: Sequelize.BOOLEAN, 
+        defaultValue: false 
       },
       cni_driver: { 
         type: Sequelize.INTEGER, 

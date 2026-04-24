@@ -8,6 +8,8 @@ router.use(protect);
 
 router.get('/', sinisterService.getAllSinisters);
 
+router.get('/:id', sinisterService.getSinisterById);
+
 router.post('/', restrictTo('CHARGE_CLIENTELE', 'ADMIN'), sinisterService.createSinister);
 
 router.put('/:id', restrictTo('GESTIONNAIRE', 'ADMIN'), sinisterService.updateSinister);

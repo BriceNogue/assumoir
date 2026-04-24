@@ -1,5 +1,10 @@
 const { Request, dbInstance, History, Sinister, Document } = require('../models');
 
+const getAllRequests = async (req, res) => {
+    const requests = await Request.findAll({});
+    res.status(200).json({ requests });
+};
+
 const getRequest = async (req, res) => {
     const request = await Request.findOne({
         where: { id: req.params.id },
@@ -35,6 +40,7 @@ const updateRequestStatus = async (req, res) => {
 
 const requestService = {
     getRequest,
+    getAllRequests,
     updateRequestStatus
 };
 

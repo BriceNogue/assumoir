@@ -1,5 +1,14 @@
 const { Document, dbInstance } = require('../models');
 
+const getAllDocuments = async (req, res) => {
+    try {
+        const documents = await Document.findAll();
+        return res.status(200).json({ documents });
+    } catch (error) {
+        return res.status(400).json({ message: "Failed to retrieve documents" });
+    }
+};
+
 const uploadDocument = async (req, res) => {
     const transaction = await dbInstance.transaction();
     try {
@@ -35,7 +44,8 @@ const validateDocument = async (req, res) => {
 
 const documentService = {
     uploadDocument,
-    validateDocument
+    validateDocument,
+    getAllDocuments
 };
 
 module.exports = documentService;

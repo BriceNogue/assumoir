@@ -11,7 +11,11 @@ module.exports = (sequelize, DataTypes) => {
     context: DataTypes.TEXT,
     driver_engaged_responsability: { type: DataTypes.INTEGER, validate: { isIn: [[0, 50, 100]] } },
     validated: { type: DataTypes.BOOLEAN, defaultValue: false }
-  }, { tableName: 'sinisters' });
+  }, { 
+    tableName: 'sinisters',
+    timestamps: true, // Pour createdAt et updatedAt aujouter automatiquement par Sequelize.
+    underscored: false // Pour createdAt et updatedAt aujouter automatiquement par Sequelize.
+  });
 
   Sinister.associate = (models) => {
     Sinister.belongsTo(models.Document, { as: 'cni_doc', foreignKey: 'cni_driver' });
