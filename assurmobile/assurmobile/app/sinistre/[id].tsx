@@ -48,7 +48,7 @@ export default function SinistreDetailScreen() {
     if (result.canceled) {
       return;
     }
-    // TODO : revoir la structure du result
+
     setPickedFile(result.assets[0]);
   };
 
